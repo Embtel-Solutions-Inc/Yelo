@@ -31,21 +31,21 @@
                                     </ul>
                                 </div>
                             </li>
-                            <!-- <li class="nav-top-item account"><a class="nav-top-link" href="javascript:void(0);"> <i class="icon-user"></i>Hi! <span class="font-bold">Jonhnathan</span></a>
+                            <li class="nav-top-item account" *ngIf =loggedin><a class="nav-top-link" href="javascript:void(0);"> <i class="icon-user"></i>Hi! <span class="font-bold">Jonhnathan</span></a>
                                 <div class="account--dropdown">
                                     <div class="account-anchor">
                                         <div class="triangle"></div>
                                     </div>
                                     <div class="account__content">
                                         <ul class="account-list">
-                                            <li class="title-item"><a href="javascript:void(0);">My Account</a></li>
-                                            <li><a href="#">Dashboard</a></li>
-                                            <li><a href="#">Account Setting</a></li>
+                                            <li class="title-item"><a href="profile">My Account</a></li>
+                                            <li><a href="profile">Dashboard</a></li>
+                                            <!-- <li><a href="#">Account Setting</a></li>
                                             <li><a href="cart">Orders</a></li>
                                             <li><a href="wishlist">Wishlist</a></li>
-                                            <li><a href="#">Shipping Address</a></li>
+                                            <li><a href="#">Shipping Address</a></li> -->
                                         </ul>
-                                        <hr>
+                                        <!-- <hr>
                                         <ul class="account-list">
                                             <li class="title-item"><a href="javascript:void(0);">Vendor Settings</a></li>
                                             <li><a href="#">Dashboard</a></li>
@@ -53,11 +53,12 @@
                                             <li><a href="cart">Orders</a></li>
                                             <li><a href="#">Settings</a></li>
                                             <li><a href="vendor-store.html">View Store</a></li>
-                                        </ul>
-                                        <hr><a class="account-logout" href="#"><i class="icon-exit-left"></i>Log out</a>
+                                        </ul> -->
+                                        <hr><a class="account-logout" href="#" (click)="logout($event)"><i class="icon-exit-left"></i>Log out</a>
                                     </div>
                                 </div>
-                            </li> -->
+                            </li>
+                            <li class="nav-top-item account" *ngIf =!loggedin><a class="nav-top-link" href="login"> <i class="icon-user"></i><b>Login / Register</b></a></li>
                         </ul>
                     </div>
                 </div>
@@ -517,7 +518,7 @@
                       <div class="result-search">
                           <ul class="list-result">
                               <li class="cart-item">
-                                  <div class="ps-product--mini-cart"><a href="product"><img class="ps-product__thumbnail" src="assets/imgproducts/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                                  <div class="ps-product--mini-cart"><a href="product"><img class="ps-product__thumbnail" src="assets/img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
                                       <div class="ps-product__content"><a class="ps-product__name" href="product"><u>Organic</u> Large Green Bell Pepper</a>
                                           <p class="ps-product__rating">
                                               <select class="rating-stars">
@@ -534,7 +535,7 @@
                                   </div>
                               </li>
                               <li class="cart-item">
-                                  <div class="ps-product--mini-cart"><a href="product"><img class="ps-product__thumbnail" src="assets/imgproducts/01-Fresh/01_16a.jpg" alt="alt" /></a>
+                                  <div class="ps-product--mini-cart"><a href="product"><img class="ps-product__thumbnail" src="assets/img/products/01-Fresh/01_16a.jpg" alt="alt" /></a>
                                       <div class="ps-product__content"><a class="ps-product__name" href="product">Avocado <u>Organic</u> Hass Large</a>
                                           <p class="ps-product__meta"> <span class="ps-product__price">$12.90</span>
                                           </p>
@@ -632,14 +633,16 @@
                                       <div class="mini-cart__footer row">
                                           <div class="col-6 title">TOTAL</div>
                                           <div class="col-6 text-right total">$29.98</div>
-                                          <div class="col-12 d-flex"><a class="view-cart" href="cart">View cart</a><a class="checkout" href="checkout.html">Checkout</a></div>
+                                          <div class="col-12 d-flex"><a class="view-cart" href="cart">View cart</a><a class="checkout" href="checkout">Checkout</a></div>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
-                      <button class="button-icon icon-md"><i class="icon-user"></i></button>
-                      <div class="ps-top__total"><a href="login">Hello,<b>Login/Register</b></a></div>
+                      <!-- <button class="button-icon icon-md"><i class="icon-user"></i></button>
+                      <div class="ps-top__total"><a href="profile" *ngIf =loggedin><b>My Profile</b></a></div>
+                      <div class="ps-top__total"><a href="login" *ngIf=!loggedin>Hello,<b>Login/Register</b></a></div> -->
+
                   </div>
               </div>
           </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -26,9 +26,23 @@ import { BlogsComponent } from './components/site/blogs/blogs.component';
 import { SingleBlogComponent } from './components/site/blogs/single-blog/single-blog.component';
 import { OrderTrackingComponent } from './components/site/order-tracking/order-tracking.component';
 import { StoreListingComponent } from './components/site/store-listing/store-listing.component';
+import { AuthService } from "./auth/auth.service";
+import { HttpClientModule } from '@angular/common/http';
+import { JarwisService } from './auth/jarwis.service';
+import { RegisterComponent } from './components/site/register/register.component';
+import { CustomerComponent } from './components/dashboard/customer/customer.component';
+import { BeforeLoginService } from './auth/before-login.service';
+import { AfterLoginService } from './auth/after-login.service';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { TokenService } from './auth/token.service';
+import { ResponsePasswordComponent } from './components/forget-password/response-password/response-password.component';
+
+
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent},
+	{ path: '', component: HomeComponent},
 	{ path: 'shop', component: ShopComponent},
 	{ path: 'shop-category', component: ShopCategoryComponent},
 	{ path: 'product', component: ProductComponent},
@@ -41,12 +55,16 @@ const appRoutes: Routes = [
 	{ path: 'terms', component: TermsComponent},
 	{ path: 'policy', component: PolicyComponent},
 	{ path: 'merchant', component: VendorComponent},
-	{ path: 'login', component: LoginComponent},
+	{ path: 'login', component: LoginComponent,canActivate: [BeforeLoginService]},
 	{ path: 'vendor-registration', component: VendorRegistrationComponent},
 	{ path: 'blogs', component: BlogsComponent},
 	{ path: 'single-post', component: SingleBlogComponent},
 	{ path: 'order-tracking', component: OrderTrackingComponent},
 	{ path: 'store-list', component: StoreListingComponent},
+	{ path: 'register', component: RegisterComponent,canActivate: [BeforeLoginService]},
+	{ path: 'profile', component: CustomerComponent, canActivate: [AfterLoginService]},
+	{ path: 'forgot-password', component:ForgetPasswordComponent ,canActivate: [BeforeLoginService]},
+	{ path: 'change-password', component:ResponsePasswordComponent ,canActivate: [BeforeLoginService]},
 	{ path: '',
 	  redirectTo: 'home',
 	  pathMatch: 'full'
@@ -77,13 +95,22 @@ const appRoutes: Routes = [
  BlogsComponent,
  SingleBlogComponent,
  OrderTrackingComponent,
- StoreListingComponent
+ StoreListingComponent,
+  RegisterComponent,
+  CustomerComponent,
+  ForgetPasswordComponent,
+  ResponsePasswordComponent
   ],
   imports: [
 	BrowserModule,
-	RouterModule.forRoot(appRoutes)
+	RouterModule.forRoot(appRoutes),
+  FormsModule,
+  HttpClientModule,
+  SnotifyModule
   ],
-  providers: [],
+  providers: [JarwisService,TokenService,AfterLoginService,AuthService,BeforeLoginService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
