@@ -1,6 +1,6 @@
 <main class="no-main">
   <div class="ps-breadcrumb">
-      <div class="container">
+      <div class="container-fluid">
           <ul class="ps-breadcrumb__list">
               <li class="active"><a href="home">Home</a></li>
               <li><a class="p-2" href="javascript:void(0);">My Account</a></li>
@@ -29,18 +29,18 @@
                           <div class="input-group group-password">
                               <input class="form-control" type="password" [(ngModel)]="form.password"  name="password" placeholder="Password" required>
                               <div class="input-group-append">
-                                  <button class="btn forgot-pass" routerLink="/forget-password" type="button">Forgot?</button>
+                                  <button class="btn forgot-pass"  type="button" [routerLink]="['/forgot-password']" routerLinkActive="active">Forgot?</button>
                               </div>
                           </div>
-                          <div class="input-group form-check">
+                          <!-- <div class="input-group form-check">
                               <input class="form-check-input" type="checkbox">
                               <label class="form-check-label">Remember me</label>
-                          </div>
+                          </div> -->
                           <button class="btn btn-login" type="submit" [disabled]="!loginFrom.valid" >Login</button>
                         </form>
                           <div class="login__conect">
                               <hr>
-                              <p>Or login with</p>
+                              <p>Or Register</p>
                               <hr>
                           </div>
                           <!-- <button class="btn btn-social btn-facebook"> <i class="fa fa-facebook-f"></i>Login with Facebook</button>
@@ -51,7 +51,7 @@
               </div>
               <div class="col-12 col-lg-6">
                   <h3 class="login__title">Advantages Of Becoming A Member</h3>
-                  <p class="login__description"> <b>Famart Buyer Protection </b>has you covered from click to delivery.<br>Sign up or sign in and you will be able to: </p>
+                  <p class="login__description"> <b>Yolo Bags Buyer Protection </b>has you covered from click to delivery.<br>Sign up or sign in and you will be able to: </p>
                   <div class="login__orther">
                       <p> <i class="icon-truck"></i>Easily Track Orders, Hassle free Returns</p>
                       <p> <i class="icon-alarm2"></i>Get Relevant Alerts and Recommendation</p>
@@ -60,7 +60,7 @@
                   <div class="login__vourcher">
                       <div class="vourcher-money"><span class="unit">$</span><span class="number">25</span></div>
                       <div class="vourcher-content">
-                          <h4 class="vourcher-title">GIFT VOURCHER FOR FISRT PURCHASE</h4>
+                          <h4 class="vourcher-title">GIFT VOURCHER FOR FIRST PURCHASE</h4>
                           <p>We give $25 as a small gift for your first purchase.<br>Welcome to Farmart Market!</p>
                       </div>
                   </div>

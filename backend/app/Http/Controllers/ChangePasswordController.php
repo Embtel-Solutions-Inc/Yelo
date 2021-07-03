@@ -14,13 +14,14 @@ class ChangePasswordController extends Controller
 
     public function reset(ChangePasswordRequest $request)
     {
-        dd($request);
+        // dd($request->email);
+        // return $this->getPasswordResetTableRow($request)->get();
         return $this->getPasswordResetTableRow($request)->count()> 0 ? $this->changePassword($request) : $this->tokenNotFoundResponse();
     }
 
     private function getPasswordResetTableRow($request)
     {
-        return DB::table('password_resets')->where(['email' => $request->email,'token' =>$request->resetToken]);
+        return DB::table('password_reset')->where(['email' => $request->email,'token' =>$request->resetToken]);
     }
 
     private function tokenNotFoundResponse()

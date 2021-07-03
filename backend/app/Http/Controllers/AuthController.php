@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 use App\User;
 
 class AuthController extends Controller
@@ -38,8 +40,10 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request)
     {
+        // dd($request);
         User::create($request->all());
-        return $this->login($request);
+        // return $this->login($request);
+        return response()->json(['data'=>'Register Successfully'],Response::HTTP_CREATED);
     }
 
     /**

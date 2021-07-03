@@ -36,7 +36,8 @@ import { AfterLoginService } from './auth/after-login.service';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { TokenService } from './auth/token.service';
-import { ResponsePasswordComponent } from './components/forget-password/response-password/response-password.component';
+import { ResponsePasswordComponent } from './components/response-password/response-password.component';
+import { ResetPasswordComponent } from './components/dashboard/customer/reset-password/reset-password.component';
 
 
 
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
 	{ path: 'terms', component: TermsComponent},
 	{ path: 'policy', component: PolicyComponent},
 	{ path: 'merchant', component: VendorComponent},
-	{ path: 'login', component: LoginComponent,canActivate: [BeforeLoginService]},
+	{ path: 'login', component: LoginComponent, canActivate: [BeforeLoginService]},
 	{ path: 'vendor-registration', component: VendorRegistrationComponent},
 	{ path: 'blogs', component: BlogsComponent},
 	{ path: 'single-post', component: SingleBlogComponent},
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
 	{ path: 'profile', component: CustomerComponent, canActivate: [AfterLoginService]},
 	{ path: 'forgot-password', component:ForgetPasswordComponent ,canActivate: [BeforeLoginService]},
 	{ path: 'change-password', component:ResponsePasswordComponent ,canActivate: [BeforeLoginService]},
+	{ path: 'reset-password', component:ResetPasswordComponent ,canActivate: [AfterLoginService]},
 	{ path: '',
 	  redirectTo: 'home',
 	  pathMatch: 'full'
@@ -99,7 +101,8 @@ const appRoutes: Routes = [
   RegisterComponent,
   CustomerComponent,
   ForgetPasswordComponent,
-  ResponsePasswordComponent
+  ResponsePasswordComponent,
+  ResetPasswordComponent
   ],
   imports: [
 	BrowserModule,

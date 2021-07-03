@@ -15,11 +15,14 @@ export class ForgetPasswordComponent implements OnInit {
   };
   public error = null
   constructor(private Jarvis: JarwisService,
-    private notify:SnotifyService ) { }
+    private notify:SnotifyService ) {
+
+     }
 
   ngOnInit(): void {
   }
   onSubmit(){
+    this.notify.info('Wait...' ,{timeout:5000})
     this.Jarvis.sendPasswordResetLink(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.notify.error(error.error.error)

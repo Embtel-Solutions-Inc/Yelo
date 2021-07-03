@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,10 @@ export class JarwisService {
 
   changePassword(data){
     return this.http.post(`${this.baseUrl}/resetPassword`, data)
+
+  }
+  resetPassword(data){
+    return this.http.post(`${this.baseUrl}/newPassword`, data)
 
   }
 }
